@@ -4,16 +4,17 @@ import { UserService } from 'src/user.service';
 @Component({
   selector: 'app-duel',
   templateUrl: './duel.component.html',
-  styleUrls: ['./duel.component.css']
+  styleUrls: ['./duel.component.css'],
 })
 export class DuelComponent implements OnInit {
-  usernameOne: string = ""
-  usernameTwo: string = ""
+  usernameOne: string = '';
+  usernameTwo: string = '';
+  u1: any = undefined;
+  u2: any = undefined;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   receiveUsernameOne(valueEmitted: string) {
     this.usernameOne = valueEmitted;
@@ -24,6 +25,7 @@ export class DuelComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.duelUsers(this.usernameOne, this.usernameTwo);
+    this.u1 = this.userService.inspectUser(this.usernameOne);
+    this.u2 = this.userService.inspectUser(this.usernameTwo);
   }
 }

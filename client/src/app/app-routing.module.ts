@@ -5,13 +5,13 @@ import { HomeComponent } from './home/home.component';
 import { InspectComponent } from './inspect/inspect.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "inspect", component: InspectComponent },
-  { path: "duel", component: DuelComponent}
+  { path: '', component: HomeComponent },
+  { path: 'inspect', component: InspectComponent },
+  { path: 'duel', component: DuelComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
