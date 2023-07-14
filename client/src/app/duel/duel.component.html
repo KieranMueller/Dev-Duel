@@ -21,157 +21,35 @@
 </div>
 <div class="container-one">
   <div
-    class="winner-div"
+    class="container"
     *ngIf="
-      u2['total-stars']! +
-        u2['highest-starred']! +
-        u2['public-repos']! +
-        u2['perfect-repos']! +
-        u2.followers! <
       u1['total-stars']! +
         u1['highest-starred']! +
-        u1['public-repos']! +
         u1['perfect-repos']! +
-        u1.followers!
+        u1.followers! >
+      u2['total-stars']! +
+        u2['highest-starred']! +
+        u2['perfect-repos']! +
+        u2.followers!
     "
   >
-    <div class="winner">🚩 {{ u1.username }} WINS! 🚩</div>
-    <div></div>
-    <div></div>
+    <app-user-card [user]="u1" [count]="2"></app-user-card>
+    <app-user-card [user]="u2" [count]="1"></app-user-card>
   </div>
   <div
-    class="winner-div"
+    class="container"
     *ngIf="
-      u2['total-stars']! +
-        u2['highest-starred']! +
-        u2['public-repos']! +
-        u2['perfect-repos']! +
-        u2.followers! >
       u1['total-stars']! +
         u1['highest-starred']! +
-        u1['public-repos']! +
         u1['perfect-repos']! +
-        u1.followers!
+        u1.followers! <=
+      u2['total-stars']! +
+        u2['highest-starred']! +
+        u2['perfect-repos']! +
+        u2.followers!
     "
   >
-    <div></div>
-    <div></div>
-    <div class="winner">🚩 {{ u2.username }} WINS! 🚩</div>
-  </div>
-  <div class="container">
-    <div class="card-outline">
-      <div class="avatar">
-        <img src="{{ u1.avatar_url }}" *ngIf="u1.avatar_url" alt="Avatar" />
-        <div class="bio">
-          {{ u1.bio }}
-        </div>
-      </div>
-      <div class="data">
-        <span *ngIf="u1.username as e">
-          <button>username</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u1.name as e">
-          <button>name</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u1.location as e">
-          <button>location</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u1.titles as e">
-          <button>titles</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u1['favorite-language'] as e">
-          <button>fav language</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u1['total-stars']! > -1">
-          <button>total stars</button>
-          <p>{{ u1["total-stars"] }}</p>
-        </span>
-        <span *ngIf="u1['highest-starred']! > -1">
-          <button>highest star count</button>
-          <p>{{ u1["highest-starred"] }}</p>
-        </span>
-        <span *ngIf="u1['public-repos']! > -1">
-          <button>public repos</button>
-          <p>{{ u1["public-repos"] }}</p>
-        </span>
-        <span *ngIf="u1['perfect-repos']! > -1">
-          <button>perfect repos</button>
-          <p>{{ u1["perfect-repos"] }}</p>
-        </span>
-        <span *ngIf="u1.followers! > -1">
-          <button>followers</button>
-          <p>{{ u1.followers }}</p>
-        </span>
-        <span *ngIf="u1.following! > -1">
-          <button>following</button>
-          <p>{{ u1.following }}</p>
-        </span>
-      </div>
-    </div>
-    <div class="card-outline">
-      <div class="avatar">
-        <img
-          src="{{ u2.avatar_url }}"
-          *ngIf="u2.avatar_url"
-          else
-          defaultAvatar
-          alt=""
-        />
-        <div class="bio">
-          {{ u2.bio }}
-        </div>
-      </div>
-      <div class="data">
-        <span *ngIf="u2.username as e">
-          <button>username</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u2.name as e">
-          <button>name</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u2.location as e">
-          <button>location</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u2.titles as e">
-          <button>titles</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u2['favorite-language'] as e">
-          <button>fav language</button>
-          <p>{{ e }}</p>
-        </span>
-        <span *ngIf="u2['total-stars']! > -1">
-          <button>total stars</button>
-          <p>{{ u2["total-stars"] }}</p>
-        </span>
-        <span *ngIf="u2['highest-starred']! > -1">
-          <button>highest star count</button>
-          <p>{{ u2["highest-starred"] }}</p>
-        </span>
-        <span *ngIf="u2['public-repos']! > -1">
-          <button>public repos</button>
-          <p>{{ u2["public-repos"] }}</p>
-        </span>
-        <span *ngIf="u2['perfect-repos']! > -1">
-          <button>perfect repos</button>
-          <p>{{ u2["perfect-repos"] }}</p>
-        </span>
-        <span *ngIf="u2.followers! > -1">
-          <button>followers</button>
-          <p>{{ u2.followers }}</p>
-        </span>
-        <span *ngIf="u2.following! > -1">
-          <button>following</button>
-          <p>{{ u2.following }}</p>
-        </span>
-      </div>
-    </div>
+    <app-user-card [user]="u1" [count]="1"></app-user-card>
+    <app-user-card [user]="u2" [count]="2"></app-user-card>
   </div>
 </div>
