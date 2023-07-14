@@ -20,149 +20,156 @@
   <button class="submit-button" (click)="onSubmit()">Duel</button>
 </div>
 <div class="container-one">
-  <div class="winner-div">
-    <div
-      class="winner one"
-      *ngIf="
-        u2.__zone_symbol__value['total-stars'] +
-          u2.__zone_symbol__value['highest-starred'] +
-          u2.__zone_symbol__value['public-repos'] +
-          u2.__zone_symbol__value['perfect-repos'] +
-          u2.__zone_symbol__value.followers <
-          u1.__zone_symbol__value['total-stars'] +
-            u1.__zone_symbol__value['highest-starred'] +
-            u1.__zone_symbol__value['public-repos'] +
-            u1.__zone_symbol__value['perfect-repos'] +
-            u1.__zone_symbol__value.followers;
-        else winnerTwo
-      "
-    >
-      🚩 {{ u1.__zone_symbol__value.username }} WINS! 🚩
-    </div>
-    <ng-template #winnerTwo>
-      <div class="winner two">
-        🚩 {{ u2.__zone_symbol__value.username }} WINS! 🚩
-      </div>
-    </ng-template>
+  <div
+    class="winner-div"
+    *ngIf="
+      u2['total-stars']! +
+        u2['highest-starred']! +
+        u2['public-repos']! +
+        u2['perfect-repos']! +
+        u2.followers! <
+      u1['total-stars']! +
+        u1['highest-starred']! +
+        u1['public-repos']! +
+        u1['perfect-repos']! +
+        u1.followers!
+    "
+  >
+    <div class="winner">🚩 {{ u1.username }} WINS! 🚩</div>
+    <div></div>
+    <div></div>
+  </div>
+  <div
+    class="winner-div"
+    *ngIf="
+      u2['total-stars']! +
+        u2['highest-starred']! +
+        u2['public-repos']! +
+        u2['perfect-repos']! +
+        u2.followers! >
+      u1['total-stars']! +
+        u1['highest-starred']! +
+        u1['public-repos']! +
+        u1['perfect-repos']! +
+        u1.followers!
+    "
+  >
+    <div></div>
+    <div></div>
+    <div class="winner">🚩 {{ u2.username }} WINS! 🚩</div>
   </div>
   <div class="container">
     <div class="card-outline">
       <div class="avatar">
-        <img
-          src="{{ u1.__zone_symbol__value.avatar_url }}"
-          *ngIf="u1.__zone_symbol__value.avatar_url"
-          else
-          defaultAvatar
-          alt=""
-        />
+        <img src="{{ u1.avatar_url }}" *ngIf="u1.avatar_url" alt="Avatar" />
         <div class="bio">
-          {{ u1.__zone_symbol__value.bio }}
+          {{ u1.bio }}
         </div>
       </div>
       <div class="data">
-        <span *ngIf="u1.__zone_symbol__value.username as e">
+        <span *ngIf="u1.username as e">
           <button>username</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value.name as e">
+        <span *ngIf="u1.name as e">
           <button>name</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value.location as e">
+        <span *ngIf="u1.location as e">
           <button>location</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value.titles as e">
+        <span *ngIf="u1.titles as e">
           <button>titles</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value['favorite-language'] as e">
+        <span *ngIf="u1['favorite-language'] as e">
           <button>fav language</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value['total-stars'] > -1">
+        <span *ngIf="u1['total-stars']! > -1">
           <button>total stars</button>
-          <p>{{ u1.__zone_symbol__value["total-stars"] }}</p>
+          <p>{{ u1["total-stars"] }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value['highest-starred'] > -1">
+        <span *ngIf="u1['highest-starred']! > -1">
           <button>highest star count</button>
-          <p>{{ u1.__zone_symbol__value["highest-starred"] }}</p>
+          <p>{{ u1["highest-starred"] }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value['public-repos'] > -1">
+        <span *ngIf="u1['public-repos']! > -1">
           <button>public repos</button>
-          <p>{{ u1.__zone_symbol__value["public-repos"] }}</p>
+          <p>{{ u1["public-repos"] }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value['perfect-repos'] > -1">
+        <span *ngIf="u1['perfect-repos']! > -1">
           <button>perfect repos</button>
-          <p>{{ u1.__zone_symbol__value["perfect-repos"] }}</p>
+          <p>{{ u1["perfect-repos"] }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value.followers > -1">
+        <span *ngIf="u1.followers! > -1">
           <button>followers</button>
-          <p>{{ u1.__zone_symbol__value.followers }}</p>
+          <p>{{ u1.followers }}</p>
         </span>
-        <span *ngIf="u1.__zone_symbol__value.following > -1">
+        <span *ngIf="u1.following! > -1">
           <button>following</button>
-          <p>{{ u1.__zone_symbol__value.following }}</p>
+          <p>{{ u1.following }}</p>
         </span>
       </div>
     </div>
     <div class="card-outline">
       <div class="avatar">
         <img
-          src="{{ u2.__zone_symbol__value.avatar_url }}"
-          *ngIf="u2.__zone_symbol__value.avatar_url"
+          src="{{ u2.avatar_url }}"
+          *ngIf="u2.avatar_url"
           else
           defaultAvatar
           alt=""
         />
         <div class="bio">
-          {{ u2.__zone_symbol__value.bio }}
+          {{ u2.bio }}
         </div>
       </div>
       <div class="data">
-        <span *ngIf="u2.__zone_symbol__value.username as e">
+        <span *ngIf="u2.username as e">
           <button>username</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value.name as e">
+        <span *ngIf="u2.name as e">
           <button>name</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value.location as e">
+        <span *ngIf="u2.location as e">
           <button>location</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value.titles as e">
+        <span *ngIf="u2.titles as e">
           <button>titles</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value['favorite-language'] as e">
+        <span *ngIf="u2['favorite-language'] as e">
           <button>fav language</button>
           <p>{{ e }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value['total-stars'] > -1">
+        <span *ngIf="u2['total-stars']! > -1">
           <button>total stars</button>
-          <p>{{ u2.__zone_symbol__value["total-stars"] }}</p>
+          <p>{{ u2["total-stars"] }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value['highest-starred'] > -1">
+        <span *ngIf="u2['highest-starred']! > -1">
           <button>highest star count</button>
-          <p>{{ u2.__zone_symbol__value["highest-starred"] }}</p>
+          <p>{{ u2["highest-starred"] }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value['public-repos'] > -1">
+        <span *ngIf="u2['public-repos']! > -1">
           <button>public repos</button>
-          <p>{{ u2.__zone_symbol__value["public-repos"] }}</p>
+          <p>{{ u2["public-repos"] }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value['perfect-repos'] > -1">
+        <span *ngIf="u2['perfect-repos']! > -1">
           <button>perfect repos</button>
-          <p>{{ u2.__zone_symbol__value["perfect-repos"] }}</p>
+          <p>{{ u2["perfect-repos"] }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value.followers > -1">
+        <span *ngIf="u2.followers! > -1">
           <button>followers</button>
-          <p>{{ u2.__zone_symbol__value.followers }}</p>
+          <p>{{ u2.followers }}</p>
         </span>
-        <span *ngIf="u2.__zone_symbol__value.following > -1">
+        <span *ngIf="u2.following! > -1">
           <button>following</button>
-          <p>{{ u2.__zone_symbol__value.following }}</p>
+          <p>{{ u2.following }}</p>
         </span>
       </div>
     </div>

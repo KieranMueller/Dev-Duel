@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/user.service';
+import { User } from 'src/user.service';
 
 @Component({
   selector: 'app-duel',
@@ -9,8 +10,8 @@ import { UserService } from 'src/user.service';
 export class DuelComponent implements OnInit {
   usernameOne: string = '';
   usernameTwo: string = '';
-  u1: any = undefined;
-  u2: any = undefined;
+  u1: User = {};
+  u2: User = {};
 
   constructor(private userService: UserService) {}
 
@@ -25,7 +26,17 @@ export class DuelComponent implements OnInit {
   }
 
   onSubmit() {
-    this.u1 = this.userService.inspectUser(this.usernameOne);
-    this.u2 = this.userService.inspectUser(this.usernameTwo);
+    this.userService.inspectUser(this.usernameOne).subscribe({
+      next: (data) => {
+        this.u1 = data;
+      },
+      error: () => alert('First Username Invalid'),
+    });
+    this.userService.inspectUser(this.usernameTwo).subscribe({
+      next: (data) => {
+        this.u2 = data;
+      },
+      error: () => alert('Second Username Invalid'),
+    });
   }
 }

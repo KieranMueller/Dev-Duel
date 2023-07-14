@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/user.service';
+import { User } from 'src/user.service';
 
 @Component({
   selector: 'app-inspect',
   templateUrl: './inspect.component.html',
   styleUrls: ['./inspect.component.css'],
 })
-export class InspectComponent implements OnInit {
-  user: any | undefined = undefined;
+export class InspectComponent {
+  user: User = {};
   username: string = '';
 
   constructor(private userService: UserService) {}
-
-  ngOnInit(): void {}
 
   receiveUsername(valueEmitted: string) {
     this.username = valueEmitted;
   }
 
   onSubmit() {
-    this.user = this.userService.inspectUser(this.username);
+    this.userService.inspectUser(this.username).subscribe({
+      next: (data) => {
+        this.user = data;
+      },
+      error: () => alert('Invalid Username'),
+    });
   }
 }
